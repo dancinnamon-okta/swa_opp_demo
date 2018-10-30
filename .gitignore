@@ -102,3 +102,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+swa_opp_demo.cert
+swa_opp_demo.key

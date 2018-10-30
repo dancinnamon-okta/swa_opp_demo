@@ -2,6 +2,10 @@
 
 # This script is a wrapper around the OPP startup intended to be used
 # by the service start.
+if [ -d /src/app ]; then
+   rm -rf /src/app
+fi
+
 git clone $APP_CODEBASE /src/app
 source /opt/rh/rh-python36/enable
 source /opt/rh/rh-python36/enable && pip install -r /src/app/requirements.txt
