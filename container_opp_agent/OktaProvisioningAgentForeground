@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# This script is a wrapper around the OPP startup intended to be used
+# by the service start.
+
+AgentInstallPrefix=$(rpm -q --queryformat '%{INSTPREFIXES}\n' OktaProvisioningAgent|tail -1)
+. $AgentInstallPrefix/defs.sh
+. $AgentInstallPrefix/conf/settings.conf
+
+if [[ ! -r $ConfigFile ]] ; then
+    echo "Config file $ConfigFile not readable."
+    exit 1
+fi
+
+launch_daemon()
+{
+  /bin/sh <<EOF
+     $JAVA -Dagent_home=${AgentInstallPrefix} $JAVA_OPTS -jar $AgentJar -mode normal -configFilePath $ConfigFile
+     pid=\$!
+     echo PID is \${pid}
+EOF
+}
+
+echo -e "Configuring the java trust store..."
+/opt/OktaProvisioningAgent/jre/bin/keytool -import -noprompt -keystore /opt/OktaProvisioningAgent/jre/lib/security/cacerts -storepass changeit -file /run/secrets/swa_opp_demo.cert -alias opp_demo_cert
+
+daemon_pid=$(launch_daemon|grep 'PID is'|sed -e 's/PID is //')
+if ps -p "${daemon_pid}" >/dev/null 2>&1
+then
+  # daemon is running.
+  echo ${daemon_pid} > $PIDFile
+else
+  echo "Daemon did not start."
+fi

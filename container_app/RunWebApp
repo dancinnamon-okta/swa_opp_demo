@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# This script is a wrapper around the OPP startup intended to be used
+# by the service start.
+git clone $APP_CODEBASE /src/app
+source /opt/rh/rh-python36/enable
+source /opt/rh/rh-python36/enable && pip install -r /src/app/requirements.txt
+python /src/app/manage.py runsslserver --cert=/run/secrets/swa_opp_demo.cert --key=/run/secrets/swa_opp_demo.key 0.0.0.0:9000
