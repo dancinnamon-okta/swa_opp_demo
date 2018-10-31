@@ -34,7 +34,7 @@ This application, while running in docker, has currently only been tested while 
 **1. Download this repository**
     Either download as a zip file (https://github.com/dancinnamon-okta/simple_swa_demo/archive/master.zip) or by using git.
     
-**2. Specify your settings in the .env file
+**2. Specify your settings in the .env file (an example is included- modify this file)
    Only 3 things needed:
    1. OKTA_ORG (set to your Okta subdomain name)
    2. OKTA_ORG_TYPE (set to 'okta' or 'oktapreview' as appropriate)
