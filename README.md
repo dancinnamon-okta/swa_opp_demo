@@ -64,7 +64,7 @@ This is pretty straightforward, create a basic SWA app that will be used to prov
 **2. Enable on-premise provisioning for the app.**
 
 See the following screenshot- note the enabling of on-premise provisioning, and the https://localhost:9000/login page.
-![alt text](https://github.com/dancinnamon-okta/swa_opp_demo/blob/master/readme_images/swa_app_general.jpg "Example general tab")
+![General Example](https://github.com/dancinnamon-okta/swa_opp_demo/blob/master/readme_images/swa_app_general.jpg "Example general tab")
 
 **3. Configure on-premise provisioning for the app.**
 
@@ -74,4 +74,13 @@ See the following screenshot.  A couple of notes:
 * The unique user name field must be "userName"
 
 * Ensure that you select the OPP agent that you wish to use.  It's likely you'll only have 1 option here.
-![alt text](https://github.com/dancinnamon-okta/swa_opp_demo/blob/master/readme_images/swa_app_provisioning.jpg "Example provisioning tab")
+![provisioning example 1](https://github.com/dancinnamon-okta/swa_opp_demo/blob/master/readme_images/swa_app_provisioning.jpg "Example provisioning tab")
+
+**4. Setup password synchronization.**
+
+See the following screenshot.  Setup as you wish.  It's recommended to synchronize a random password so that users may not know what the password is.  This will force them to authenticate through Okta, and MFA may be applied if desired.
+![provisioning example 2](https://github.com/dancinnamon-okta/swa_opp_demo/blob/master/readme_images/swa_app_provisioning2.jpg "Example provisioning tab 2")
+**5. Assign a user.**
+
+At this point you're all set- you should be able to assign a user at will, and they will automatically be provisioned into the application.  Group push is also implemented.  Experiment!
+![assign](https://github.com/dancinnamon-okta/swa_opp_demo/blob/master/readme_images/assignments.jpg "Example assignments tab")
