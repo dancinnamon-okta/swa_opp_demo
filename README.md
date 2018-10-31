@@ -53,3 +53,25 @@ In your same working directory (that was created when you unzipped the repositor
 That command will start both containers, and the web app container will get the latest code from the repository specified in step 2 of the build process.
 
 Visit https://localhost:9000/login to see your creation!
+
+## How to Configure Okta
+While this guide assumes a working understanding of how to configure Okta, there are a few requirements when setting up the new Okta application that you should be aware of.
+
+**1. Create a new SWA application in the Okta org.**
+
+This is pretty straightforward, create a basic SWA app that will be used to provision/authenticate users into the application we just stood up.
+
+**2. Enable on-premise provisioning for the app.**
+
+See the following screenshot- note the enabling of on-premise provisioning, and the https://localhost:9000/login page.
+![alt text](https://github.com/dancinnamon-okta/swa_opp_demo/blob/master/readme_images/swa_app_general.jpg "Example general tab")
+
+**3. Configure on-premise provisioning for the app.**
+
+See the following screenshot.  A couple of notes:
+* The SCIM connector URL ***MUST BE***: https://demowebapp:9000/scim/v2/. "demowebapp" is the internal docker name of the web-app container (remember the network communication is just between the 2 docker containers here).  "demowebapp" is also the CN on the SSL certificate.
+
+* The unique user name field must be "userName"
+
+* Ensure that you select the OPP agent that you wish to use.  It's likely you'll only have 1 option here.
+![alt text](https://github.com/dancinnamon-okta/swa_opp_demo/blob/master/readme_images/swa_app_provisioning.jpg "Example provisioning tab")
