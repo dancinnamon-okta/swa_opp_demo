@@ -6,7 +6,14 @@ if [ -d /src/app ]; then
    rm -rf /src/app
 fi
 
-git clone $APP_CODEBASE /src/app
+# If we're in developer mode, then we'll symlink to our codebase instead of git cloning it.
+echo "Developer mode: $DEVELOP"
+if [[ "$DEVELOP" -eq "1" ]]; then
+  ln -s $APP_CODEBASE /src/app
+else
+  git clone $APP_CODEBASE /src/app
+fi
+
 source /opt/rh/rh-python36/enable
 source /opt/rh/rh-python36/enable && pip install -r /src/app/requirements.txt
 python /src/app/manage.py migrate

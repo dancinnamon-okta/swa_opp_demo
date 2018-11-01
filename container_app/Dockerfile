@@ -2,6 +2,7 @@ FROM centos:centos7
 
 ARG APP_CODEBASE
 ENV APP_CODEBASE=$APP_CODEBASE
+ENV DEVELOP=0
 
 RUN yum -y update; yum clean all
 RUN yum -y install epel-release; yum clean all

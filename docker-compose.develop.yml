@@ -1,0 +1,35 @@
+version: '3.1'
+services:
+  demowebapp:
+    build:
+      context: ./container_app
+      args:
+        APP_CODEBASE : ${APP_CODEBASE}
+        
+    ports:
+     - "9000:9000"
+    secrets:
+     - swa_opp_demo.cert
+     - swa_opp_demo.key
+
+    volumes:
+     - ${APP_CODEBASE}:${APP_CODEBASE}
+
+    environment:
+     - DEVELOP=1
+
+  opp_agent:
+    build:
+      context: ./container_opp_agent
+      args:
+        OKTA_ORG : ${OKTA_ORG}
+        OKTA_ORG_TYPE : ${OKTA_ORG_TYPE}
+
+    secrets:
+     - swa_opp_demo.cert
+
+secrets:
+  swa_opp_demo.cert:
+    file: ./swa_opp_demo.cert
+  swa_opp_demo.key:
+    file: ./swa_opp_demo.key
