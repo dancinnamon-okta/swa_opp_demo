@@ -5,6 +5,8 @@ services:
       context: ./container_app
       args:
         APP_CODEBASE : ${APP_CODEBASE}
+        OKTA_APP_NAME : ${OKTA_APP_NAME}
+        API_KEY : ${API_KEY}
         
     ports:
      - "9000:9000"
@@ -17,7 +19,6 @@ services:
 
     environment:
      - DEVELOP=1
-     - API_KEY=DSnajhfaiuhAJFD3242rgv1)(*&234
 
   opp_agent:
     build:
