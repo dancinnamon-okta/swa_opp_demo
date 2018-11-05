@@ -90,7 +90,7 @@ See the following screenshot.  Setup as you wish.  It's recommended to synchroni
 **5. Assign a user.**
 
 At this point you're all set- you should be able to assign a user at will, and they will automatically be provisioned into the application.  Group push is also implemented.  Experiment!
-![assign](https://github.com/dancinnamon-okta/swa_opp_demo/blob/master/readme_images/assignments.jpg "Example assignments tab")
+![assign](https://github.com/dancinnamon-okta/swa_opp_demo/blob/master/readme_images/swa_app_assignments.jpg "Example assignments tab")
 
 **6. Setup additional profile attributes.**
 
@@ -100,5 +100,7 @@ The following attributes can be specified on the Okta appuser profile for this a
 - company_name
 - country
 - phone_number
+
+![profile page](https://github.com/dancinnamon-okta/swa_opp_demo/blob/master/readme_images/swa_app_profile.jpg "Example profile")
 
 Additionally, this application is looking for a group called "Catalog Admin".  If the user has this group, then they are an admin and can view the admin pages.
