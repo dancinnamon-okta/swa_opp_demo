@@ -33,14 +33,18 @@ This application, while running in docker, has currently only been tested while 
 
 **1. Download this repository**
     Either download as a zip file (https://github.com/dancinnamon-okta/simple_swa_demo/archive/master.zip) or by using git.
-    
-**2. Specify your settings in the .env file (an example is included- modify this file)
+
+**2. Create a new SWA app within your Okta instance.  At this time you only need to follow step 1 of the "How to Configure Okta" section below- you need the application to be created in order to fill out the .env file correctly in step 3.
+
+**3. Specify your settings in the .env file (an example is included- modify this file)
    Only 3 things needed:
    1. OKTA_ORG (set to your Okta subdomain name)
    2. OKTA_ORG_TYPE (set to 'okta' or 'oktapreview' as appropriate)
    3. APP_CODEBASE (set to a git repository of your choice, or https://github.com/dancinnamon-okta/simple_swa_demo.git)
+   4. API_KEY (set to a long value that you choose. This is what Okta will use to authenticate with when provisioning.
+   5. OKTA_APP_NAME (set to the name of the application in Okta that we'll connect to).
    
-**3. Run build.sh
+**4. Run build.sh
 
 *Note- During the build process, the device-code authorization flow will kick off to our Okta org.  You'll be asked to authenticate against this org.  I've found that you need to perform that authorization step **TWICE** for the OPP agent setup to pick it up.*
 
@@ -59,7 +63,9 @@ While this guide assumes a working understanding of how to configure Okta, there
 
 **1. Create a new SWA application in the Okta org.**
 
-This is pretty straightforward, create a basic SWA app that will be used to provision/authenticate users into the application we just stood up.
+This is pretty straightforward, create a basic SWA app that will be used to provision/authenticate users into the application we just stood up.  Grab the name of the application within Okta (as shown) as it will be needed for the .env file!
+![App Name Example](https://github.com/dancinnamon-okta/swa_opp_demo/blob/master/readme_images/swa_app_name.jpg "Example of obtaining the app name")
+
 
 **2. Enable on-premise provisioning for the app.**
 
@@ -80,7 +86,19 @@ See the following screenshot.  A couple of notes:
 
 See the following screenshot.  Setup as you wish.  It's recommended to synchronize a random password so that users may not know what the password is.  This will force them to authenticate through Okta, and MFA may be applied if desired.
 ![provisioning example 2](https://github.com/dancinnamon-okta/swa_opp_demo/blob/master/readme_images/swa_app_provisioning2.jpg "Example provisioning tab 2")
+
 **5. Assign a user.**
 
 At this point you're all set- you should be able to assign a user at will, and they will automatically be provisioned into the application.  Group push is also implemented.  Experiment!
 ![assign](https://github.com/dancinnamon-okta/swa_opp_demo/blob/master/readme_images/assignments.jpg "Example assignments tab")
+
+**6. Setup additional profile attributes.**
+
+The following attributes can be specified on the Okta appuser profile for this app:
+- department
+- opt_in
+- company_name
+- country
+- phone_number
+
+Additionally, this application is looking for a group called "Catalog Admin".  If the user has this group, then they are an admin and can view the admin pages.
