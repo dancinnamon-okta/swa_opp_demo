@@ -101,4 +101,6 @@ The following attributes can be specified on the Okta appuser profile for this a
 - country
 - phone_number
 
+![profile page](https://github.com/dancinnamon-okta/swa_opp_demo/blob/master/readme_images/swa_app_profile.jpg "Example profile")
+
 Additionally, this application is looking for a group called "Catalog Admin".  If the user has this group, then they are an admin and can view the admin pages.
