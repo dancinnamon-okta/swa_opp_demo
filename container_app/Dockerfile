@@ -1,7 +1,10 @@
 FROM centos:centos7
 
 ARG APP_CODEBASE
+ARG API_KEY
 ENV APP_CODEBASE=$APP_CODEBASE
+ENV API_KEY=$API_KEY
+
 ENV DEVELOP=0
 
 RUN yum -y update; yum clean all

@@ -17,6 +17,7 @@ services:
 
     environment:
      - DEVELOP=1
+     - API_KEY=DSnajhfaiuhAJFD3242rgv1)(*&234
 
   opp_agent:
     build:
