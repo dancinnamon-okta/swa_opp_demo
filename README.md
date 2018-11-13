@@ -1,7 +1,7 @@
 # swa_opp_demo
 Demonstration of integrating an old legacy application with Okta.  It is setup to run all necessary components within docker containers- allowing the entire codebase to be portable.
 
-!**Please see the Lab guide file for the best setup instructions**!
+**Please see the Lab guide file for the best setup instructions**
 
 ## Components
 **1. Container - opp**
